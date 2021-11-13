@@ -1,0 +1,27 @@
+<app-competitors-top></app-competitors-top>
+<div style="width:100%">
+  <p-table [value]="jobs"
+    styleClass="p-datatable-sm"
+    [paginator]="true" 
+    [rows]="rows" 
+    [showCurrentPageReport]="true" 
+    [(first)]="first"
+    currentPageReportTemplate="แสดงข้อมูล {first} - {last} จาก {totalRecords}" 
+    [rowsPerPageOptions]="[5,10]"
+    responsiveLayout="scroll"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+          <th pResizableColumn>หางาน</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job>
+        <tr>
+            <td>
+              <div><a href="{{ job.ref }}" target="_blank">{{ job.topic }}</a></div>
+              <div class="date">รับสมัครถึงวันที่ {{ converseDate(job.dateExpire) }}</div>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,57 @@
+<i class="pi pi-th-large app-nave-menu" tooltipStyleClass="tooltip" pTooltip="เมนู" tooltipPosition="top" (click)="listMenu()"></i>
+<p-dialog header="เมนู" styleClass="listMenu" 
+[breakpoints]="{'1024px': '100vw', '640px': '100vw'}" [style]="{width: '25vw'}"
+[(visible)]="display" [position]="position" [draggable]="false" [modal]="true" [dismissableMask]="true">
+  <div class="flex flex-column">
+
+    <a routerLink="/stats">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-chart-line icon"></i>
+        <span class="txt-menu">สถิติ</span>
+      </div>
+    </a>
+
+    <a routerLink="/forum">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-comments icon"></i>
+        <span class="txt-menu">พูดคุย</span>
+      </div>
+    </a>
+
+    <a routerLink="/job">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-send icon"></i>
+        <span class="txt-menu">หางาน</span>
+      </div>
+    </a>
+
+    <a routerLink="/download">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-download icon"></i>
+        <span class="txt-menu">แนวข้อสอบ</span>
+      </div>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.kruApp.kruphoochuay" target="_blank">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-android icon"></i>
+        <span class="txt-menu">แอปพลิเคชัน</span>
+      </div>
+    </a>
+
+    <a routerLink="/course">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-briefcase icon"></i>
+        <span class="txt-menu">เรียนออนไลน์</span>
+      </div>
+    </a>
+
+    <a routerLink="/predict">
+      <div class="flex" (click)="listMenu()">
+        <i class="pi pi-info icon"></i>
+        <span class="txt-menu">เซียมซีเสี่ยงทาย</span>
+      </div>
+    </a>
+
+  </div>
+</p-dialog>

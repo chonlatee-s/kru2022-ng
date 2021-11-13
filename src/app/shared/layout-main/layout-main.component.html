@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="flex container">
+
+  <!-- Contents -->
+  <div class="flex flex-grow-1">
+    <div class="contents">
+      <router-outlet (activate)='onActivate($event)'></router-outlet>
+    </div>
+  </div>
+
+  <!-- Right Menu -->
+  <div class="flex">
+    <div class="right" *ngIf="showMenuRight">
+      <div class="flex">
+        <app-menu></app-menu>
+      </div>
+      <div class="flex">
+        <app-competitors></app-competitors>
+      </div>
+      <div class="flex">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+  
+</div>
+

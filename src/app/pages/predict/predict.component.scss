@@ -1,0 +1,58 @@
+.card-step {
+  background-color: #fff;
+  margin:5px;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-title {
+  font-weight: 300;
+  color: #B7996C;
+  font-family: 'Sarabun';
+  font-size: 14px;
+}
+::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-number {
+  background: #B7996C;
+  color: #fff;
+  font-family: 'Sarabun';
+}
+
+::ng-deep .p-component {
+  font-size: 14px;
+  font-family: 'Sarabun';
+  font-weight: 300;
+}
+
+.card-btn {
+  color: #fff;
+  background-color: #B7996C;
+  margin:10px;
+  padding: 5px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card-btn:hover {
+  color: #fff;
+  background-color: #222;
+  margin:10px;
+  padding: 5px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card-predict {
+  font-size: 14px;
+  font-weight: 300;
+  margin:30px 5px 5px 5px;
+  background-color: #EEEEEE;
+  padding: 15px;
+  border-radius: 15px;
+  color: #222;
+}
+.txt-ref {
+  font-size: 10px;
+  font-weight: #EEEEEE;
+}

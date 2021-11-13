@@ -1,0 +1,27 @@
+.pointer {cursor: pointer;}
+::ng-deep .listMenu { 
+  margin: 50px 50px 0px 50px !important; 
+}
+::ng-deep .p-dialog-header {
+  font-family: 'Sarabun';
+}
+.icon {
+  font-size: 15px;
+  font-weight: 100;
+  margin-right: 20px;
+  color: #222;
+}
+.txt-menu {
+  font-size: 15px;
+  font-weight: 100;
+  font-family: 'Sarabun';
+  font-weight: 200;
+  color: #222;
+}
+
+a:hover .txt-menu {
+  color: #B7996C !important;
+}
+a:hover .icon {
+  color: #B7996C !important;
+}

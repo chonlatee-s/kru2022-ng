@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="flex justify-content-between flex-wrap">
+    
+    <ng-template ngFor let-item [ngForOf]="competitor" let-i="index">
+
+      <div class="flex flex-row align-items-center justify-content-center" [ngClass]="{'win1': i === 0, 'win2': i === 1, 'win3': i===2 }">
+        <div class="flex flex-column align-items-center">
+          <p-avatar image="{{ item.profile }}" shape="circle" size="large"></p-avatar>
+          <div class="flex align-items-center score"> 
+            {{ item.fullname.substr(0, 10) }} 
+            <span *ngIf="item.fullname.length >=10 ">...</span>
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+  
+  </div>
+  <div class="menu-boxC">
+    <a routerLink="/test"><button pButton type="button" class="menu p-button-rounded" label="ทำข้อสอบ"></button></a>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<p class="txt-menu">จัดอันดับการแข่งขัน</p>
+<div class="flex flex-column">
+
+  <ng-template ngFor let-item [ngForOf]="competitor" let-i="index">
+
+    <div class="flex flex-row mb-2">
+      <div class="flex">
+        <p-avatar image="{{ item.profile }}" shape="circle"></p-avatar>
+      </div>
+      <div class="flex flex-column">
+        <div class="flex name">
+          {{ item.fullname.substr(0, 30) }} 
+          <span *ngIf="item.major.length >=30 ">...</span>
+        </div>
+        <div class="flex score"> 
+          <span class="circleBase win1" *ngIf="i==0"></span>
+          <span class="circleBase win2" *ngIf="i==1"></span>
+          <span class="circleBase win3" *ngIf="i==2"></span>
+          สาขา {{ item.major.substr(0, 30) }} 
+          <span *ngIf="item.major.length >=30 ">...</span>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+
+</div>
+<div class="btn">
+  <a routerLink="/test"><button pButton type="button" class="menu p-button-rounded">ทำข้อสอบ</button></a>
+</div>

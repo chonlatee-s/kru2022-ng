@@ -1,0 +1,125 @@
+<div class="flex flex-column mt-4">
+
+  <div class="flex justify-content-end">
+    <div class="forum-btn-hover">
+      <button pButton type="button" class="forum-btn p-button-rounded" (click)="display = true">เริ่มพูดคุย</button>
+    </div>
+  </div>
+
+  <div class="flex flex-grow-1">
+    <div style="width:100%">
+      <p-table [value]="forums"
+        styleClass="p-datatable-sm"
+        [paginator]="true" 
+        [rows]="rows" 
+        [showCurrentPageReport]="true" 
+        [(first)]="first"
+        currentPageReportTemplate="แสดงข้อมูล {first} - {last} จาก {totalRecords}" 
+        [rowsPerPageOptions]="[10,20]"
+        responsiveLayout="scroll"
+      >
+        <ng-template pTemplate="body" let-rowData let-forum>
+            <tr>
+                <td>
+                  <div class="flex flex-row">
+                    <div class="flex mt-1">
+                      <p-avatar image="{{ forum.profile }}" shape="circle" size="large"></p-avatar>
+                    </div>
+                    <div class="flex flex-column">
+                      <div class="flex">
+                        <div class="txt-topic"><a routerLink="/forum/chat/{{forum.uuId}}"> {{ forum.topic }} </a></div>
+                      </div>
+                      <div class="flex">
+                        <div class="date"> <i class="pi pi-calendar icon-date"></i> {{ converseDate(forum.updateAt) }} </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td style="text-align: right; width: 10%;" >
+                  <div class="flex flex-row flex-wrap justify-content-end">
+                    <div class="flex">
+                      <a routerLink="/forum/chat/{{forum.uuId}}">
+                        <i class="pi pi-comments" style="font-size: 15px; margin-top: 3px; padding-left: 5px; padding-right: 5px;"></i>
+                      </a>
+                    </div>
+                    <div class="flex">
+                      <a routerLink="/forum/chat/{{forum.uuId}}">
+                        <span style="font-size: 15px; padding-left: 5px; padding-right: 5px;"> {{ forum.detail.length }} </span>
+                      </a>
+                    </div>
+                    <div class="flex mt-1" *ngIf="userProfile" style="cursor: pointer;">
+                      <i class="pi pi-ellipsis-v" *ngIf="forum.userId === userProfile.uuId" (click)="activeItem = rowData; menu.toggle($event)"></i>
+                    </div>
+                  </div>
+                </td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+<p-confirmDialog #cd>
+  <ng-template pTemplate="footer">
+    <div class="flex mt-2 box-comment justify-content-center">
+      <div class="flex"><span class="btn-cancle" (click)="cd.reject()">ไม่</span></div>
+      <div class="flex">
+        <button pButton type="button" class="p-button-rounded btn-comment" (click)="cd.accept()"> ใช่ ลบเลย</button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog>
+
+
+<p-sidebar [(visible)]="display" position="bottom" *ngIf="userProfile">
+
+  <div *ngIf="isLogin; else elseBlock">
+    <div class="flex flex-row justify-content-around flex-wrap">
+      <div class="flex">
+        <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
+      </div>
+      <div class="flex flex-grow-1">
+        <input type="text" class="comment" placeholder="ข้อความ" [(ngModel)]="msg" #ctrl="ngModel" required>
+      </div>
+    </div>
+    <div class="flex mt-2 box-comment justify-content-center">
+      <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
+      <div class="flex">
+        <button 
+          pButton type="button" 
+          class="p-button-rounded btn-comment" 
+          (click)="sendData()" [disabled]="!ctrl.valid">
+          ส่งข้อความ </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <p class="text-center"> <a routerLink="/register">ลงทะเบียนเข้าใช้งาน</a> </p>
+  </ng-template>
+
+</p-sidebar>
+
+
+<p-sidebar [(visible)]="displayEdit" position="bottom" *ngIf="userProfile">
+  <div class="flex flex-row justify-content-around flex-wrap">
+    <div class="flex">
+      <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
+    </div>
+    <div class="flex flex-grow-1">
+      <input type="text" class="comment" placeholder="ข้อความ" [(ngModel)]="msgEdit" #ctrl2="ngModel" required>
+    </div>
+  </div>
+  <div class="flex mt-2 box-comment justify-content-center">
+    <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
+    <div class="flex">
+      <button 
+        pButton type="button" 
+        class="p-button-rounded btn-comment" 
+        (click)="sendDataEdit()" [disabled]="!ctrl2.valid">
+        ส่งข้อความ </button>
+    </div>
+  </div>
+</p-sidebar>
+<p-messages></p-messages>

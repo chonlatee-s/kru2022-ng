@@ -1,0 +1,28 @@
+<app-competitors-top></app-competitors-top>
+<div style="width:100%">
+  <p-table [value]="downloads"
+    styleClass="p-datatable-sm"
+    [paginator]="true" 
+    [rows]="rows" 
+    [showCurrentPageReport]="true" 
+    [(first)]="first"
+    currentPageReportTemplate="แสดงข้อมูล {first} - {last} จาก {totalRecords}" 
+    [rowsPerPageOptions]="[5,10]"
+    responsiveLayout="scroll"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+          <th pResizableColumn>แนวข้อสอบ</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-download>
+        <tr>
+            <td>
+              <div><a href="{{ download.ref }}" target="_blank">{{download.topic}}</a></div>
+              <div class="date">โดย {{ download.credit }} </div>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-messages></p-messages>

@@ -1,0 +1,56 @@
+<p-avatar *ngIf="isLogin"
+  image="{{ userProfile.profile }}" 
+  shape="circle" tooltipStyleClass="tooltip" 
+  pTooltip="บัญชี" tooltipPosition="top" 
+  (click)="listMenu()" class="pointer">
+</p-avatar>
+
+<p-avatar *ngIf="!isLogin"
+  icon="pi pi-user" 
+  shape="circle"
+  (click)="listMenu()" class="pointer">
+</p-avatar>
+
+<p-dialog header="บัญชีของคุณ" styleClass="listMenu" 
+  [breakpoints]="{'1024px': '100vw', '640px': '100vw'}" [style]="{width: '25vw'}"
+  [(visible)]="display" [position]="position" [draggable]="false"  [modal]="true" [dismissableMask]="true">
+
+  <div class="flex flex-column">
+
+    <div *ngIf="isLogin; else elseBlock">
+      <div class="flex">
+        <i class="pi pi-user icon"></i>
+        <span class="txt-menu">{{ userProfile.fullname }}</span>
+      </div>
+      <div class="flex mt-3" (click)="listMenu()">
+        <a routerLink="/profile">
+          <i class="pi pi-cog icon"></i>
+          <span class="txt-menu">ตั้งค่า</span>
+        </a>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="flex">
+        <i class="pi pi-user icon"></i>
+        <span class="txt-menu"> ผู้มาเยือน </span>
+      </div>
+    </ng-template>
+
+    <p-divider></p-divider>
+
+    <div *ngIf="isLogin" class="flex pointer" (click)="logout()">
+      <a href="#">
+        <i class="pi pi-sign-out icon"></i>
+        <span class="txt-menu">ออกจากระบบ</span>
+      </a>
+    </div>
+
+    <div *ngIf="!isLogin" class="flex pointer">
+      <a routerLink="/register">
+        <i class="pi pi-sign-in icon"></i>
+        <span class="txt-menu">ลงทะเบียน</span>
+      </a>
+    </div>
+
+  </div>
+</p-dialog>

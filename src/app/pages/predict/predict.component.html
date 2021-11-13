@@ -1,0 +1,26 @@
+<app-competitors-top></app-competitors-top>
+<div class="card-step">
+  <p-steps [model]="items" [activeIndex]="step"></p-steps>
+</div>
+
+<div class="card-btn" *ngIf="step1" (click)="getPredict()">
+  <p>ถ้าพร้อมแล้ว เริ่ม</p>
+</div>
+
+<div class="card-predict" *ngIf="step2">
+  <div class="text-center">
+    <p>กำลังเสี่ยงทาย . . .</p>
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>
+
+<div class="card-predict" *ngIf="predict">
+  <b>คุณได้ใบที่ {{ predict.id }} </b>
+  <p>
+    {{ predict.result }}
+  </p>
+  <p-divider></p-divider>
+  <p class="txt-ref">ที่มา วัดหนองบัว จังหวัดอุบลราชธานี</p>
+</div>
+
+

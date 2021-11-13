@@ -1,0 +1,55 @@
+.pointer {cursor: pointer;}
+.navbar {
+  overflow: hidden;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0.5px 0.5px 2px #e7e5e5;
+  padding: 0px;
+}
+
+.container {
+  margin:10px 100px 0px 100px;
+}
+
+.txt-header {
+  font-weight: 500; 
+  font-size: 21px; 
+  margin-left: 12px;
+  color: #B7996C;
+}
+.menu { 
+  padding: 10px 12px 10px 12px;
+  font-size: 1.2rem;
+  color: #222;
+}
+.nav-menu { 
+  display: none;
+  font-size: 1.2rem;
+  color: #222;
+  padding-top: 5px;
+}
+.img-profile {
+  padding-left: 25px;
+  margin-top: 2px;
+}
+::ng-deep .tooltip {
+  font-family: 'Sarabun' !important;
+  font-weight: 100 !important;
+  font-size: 10px !important;
+}
+
+//////////////////////////////// SCREEN ////////////////////////////////
+@media (max-width: 1024px)
+{ 
+  .container { margin:10px; }
+  .txt-header { display: none; }
+  .menu { display: none; }
+  .nav-menu { display: block; }
+  .img-profile {
+    padding-left: 0px;
+    margin-top: 2px;
+  }
+}
